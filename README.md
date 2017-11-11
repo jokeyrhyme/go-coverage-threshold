@@ -1,4 +1,4 @@
-# go-coverage-threshold
+# go-coverage-threshold [![Build Status](https://travis-ci.org/jokeyrhyme/go-coverage-threshold.svg?branch=master)](https://travis-ci.org/jokeyrhyme/go-coverage-threshold)
 
 keep your per-path Go test coverage above a threshold
 
