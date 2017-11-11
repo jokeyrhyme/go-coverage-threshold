@@ -1,0 +1,2 @@
+ok  	github.com/jokeyrhyme/go-coverage-threshold/cmd/go-coverage-threshold	0.001s	coverage: 0.0% of statements
+?   	github.com/jokeyrhyme/go-coverage-threshold/pkg/cover	[no test files]
