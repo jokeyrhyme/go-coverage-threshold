@@ -3,6 +3,13 @@
 keep your per-path Go test coverage above a threshold
 
 
+## Installation
+
+```sh
+go get -u github.com/jokeyrhyme/go-coverage-threshold/cmd/go-coverage-threshold
+```
+
+
 ## Usage
 
 ```
