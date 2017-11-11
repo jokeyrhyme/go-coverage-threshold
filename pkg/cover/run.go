@@ -8,12 +8,10 @@ import (
 func Run() ([]byte, error) {
 	goExe, err := exec.LookPath("go")
 	if err != nil {
-		return nil, nil
+		return nil, err
 	}
 
 	cmd := exec.Command(goExe, "test", "-cover", "./...")
-
-	// TODO: stream the output to stdout
 
 	output, err := cmd.CombinedOutput()
 	return output, err
