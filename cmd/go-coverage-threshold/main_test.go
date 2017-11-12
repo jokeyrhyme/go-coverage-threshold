@@ -1,5 +1,15 @@
 package main
 
-import "testing"
+import (
+	"testing"
 
-func TestStub(t *testing.T) {}
+	"github.com/stretchr/testify/assert"
+)
+
+func TestGoPath(t *testing.T) {
+	t.Parallel()
+
+	got, err := goPath()
+	assert.NotEmpty(t, got)
+	assert.Nil(t, err)
+}

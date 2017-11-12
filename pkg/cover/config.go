@@ -17,6 +17,10 @@ type Config struct {
 	Threshold float64 `toml:"threshold"`
 }
 
+var (
+	cache = make(map[string]*Config)
+)
+
 // Load configuration values from files.
 func Load(wd string) (*Config, error) {
 	cwd := wd
@@ -33,6 +37,10 @@ func Load(wd string) (*Config, error) {
 		return nil, err
 	}
 
+	if cached, ok := cache[which]; ok {
+		return cached, nil
+	}
+
 	bytes, err := readFile(which)
 	if err != nil {
 		return nil, err
@@ -44,6 +52,8 @@ func Load(wd string) (*Config, error) {
 		fmt.Printf("bad TOML? %s: %v\n", which, err)
 		return nil, err
 	}
+
+	cache[which] = config
 
 	return config, nil
 }
