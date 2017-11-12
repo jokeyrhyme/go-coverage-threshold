@@ -4,7 +4,7 @@ lint: setup-lint vendor
 	gometalinter --concurrency 2 --deadline 5m --exclude libexec --tests --vendor ./...
 
 run: vendor
-	go run ./cmd/go-coverage-threshold/main.go -threshold 0
+	go run ./cmd/go-coverage-threshold/main.go
 
 setup-vendor:
 	go get -u github.com/golang/dep/cmd/dep
@@ -17,7 +17,7 @@ test: vendor
 	go test ./...
 
 test-cover: vendor
-	go run ./cmd/go-coverage-threshold/main.go -threshold 0
+	go run ./cmd/go-coverage-threshold/main.go
 
 test-race: vendor
 	go test -race ./...

@@ -33,17 +33,19 @@ This is useful for Continuous Integration workflows where you want to maintain a
 ## Configuration
 
 You may place a .cover.toml file at the root of your project,
-as an alternative to using command line arguments:
+as an alternative to using command line arguments, e.g:
 
 ```toml
-# e.g. specify "50.0" if you want 50% coverage,
+# important: specify "50.0" if you want 50% coverage,
 # "50" without the ".0" will not work
 threshold = 50.0
 ```
 
 Note that command line arguments take precedence over configuration files
 
+Note that .cover.toml files in sub-directories take precedence over parent directories,
+so you may have a threshold for the whole project as a rule,
+yet define exceptions for certain sub-directories, e.g:
 
-## Roadmap
-
--   [ ] optional per-path thresholds
+- PROJECT_ROOT/.cover.toml: threshold = 80.0
+- PROJECT_ROOT/cmd/.cover.toml: threshold = 10.0
