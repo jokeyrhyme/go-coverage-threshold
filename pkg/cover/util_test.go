@@ -1,12 +1,64 @@
 package cover
 
 import (
+	"errors"
 	"fmt"
+	"math/rand"
+	"os"
+	"path"
 	"regexp"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
+
+func TestFindUp(t *testing.T) {
+	t.Parallel()
+
+	wd, err := os.Getwd()
+	if err != nil {
+		t.Fatalf("unable to determine working directory: %v\n", err)
+	}
+
+	type Case struct {
+		cwd     string
+		s       string
+		want    string
+		wantErr error
+	}
+	cases := []Case{
+		{
+			cwd:     wd,
+			s:       "util_test.go",
+			want:    path.Join(wd, "util_test.go"),
+			wantErr: nil,
+		},
+		{
+			cwd:     path.Join(wd, "fixtures"),
+			s:       "util_test.go",
+			want:    path.Join(wd, "util_test.go"),
+			wantErr: nil,
+		},
+		{
+			cwd:     wd,
+			s:       "really_really_should_not_exist_" + string(rand.Int()),
+			want:    "",
+			wantErr: errors.New("file not found"),
+		},
+	}
+
+	for i, c := range cases {
+		func(i int, c Case) {
+			t.Run(fmt.Sprintf("cases[%d]", i), func(t *testing.T) {
+				t.Parallel()
+
+				got, err := findUp(c.cwd, c.s)
+				assert.Equal(t, c.want, got)
+				assert.Equal(t, c.wantErr, err)
+			})
+		}(i, c)
+	}
+}
 
 func TestMergeMaps(t *testing.T) {
 	t.Parallel()
