@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	okRegexp  = regexp.MustCompile(`^(?P<status>ok)\s+(?P<path>\S+)\s+(?P<duration>\d+\.\d+\w)\s+coverage: (?P<coverage>\d+\.\d+)% of statements$`)
+	okRegexp  = regexp.MustCompile(`^(?P<status>ok)\s+(?P<path>\S+)\s+(?P<duration>\d+\.\d+\w|\(cached\))\s+coverage: (?P<coverage>\d+\.\d+)% of statements$`)
 	nilRegexp = regexp.MustCompile(`^(?P<status>\?)\s+(?P<path>\S+).+$`)
 )
 

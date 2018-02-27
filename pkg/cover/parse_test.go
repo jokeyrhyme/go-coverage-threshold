@@ -59,6 +59,25 @@ func TestParse(t *testing.T) {
 				},
 			},
 		},
+		{
+			fixtureFile: "go-1-10-0-test-cover.txt",
+			want: []*cover.Entry{
+				{
+					Coverage:  8.3,
+					Duration:  "0.002s",
+					Path:      "github.com/example/cmd/foo",
+					Status:    "ok",
+					Threshold: 0.0,
+				},
+				{
+					Coverage:  72.4,
+					Duration:  "(cached)",
+					Path:      "github.com/example/pkg/bar",
+					Status:    "ok",
+					Threshold: 0.0,
+				},
+			},
+		},
 	}
 
 	for i, c := range cases {

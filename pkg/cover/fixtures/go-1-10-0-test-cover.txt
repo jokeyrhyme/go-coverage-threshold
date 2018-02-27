@@ -1,0 +1,2 @@
+ok      github.com/example/cmd/foo   0.002s  coverage: 8.3% of statements
+ok      github.com/example/pkg/bar   (cached)        coverage: 72.4% of statements
