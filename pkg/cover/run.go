@@ -11,7 +11,8 @@ func Run() ([]byte, error) {
 		return nil, err
 	}
 
-	cmd := exec.Command(goExe, "test", "-cover", "./...")
+	// gas lint warns about possible injection here, but we're fine
+	cmd := exec.Command(goExe, "test", "-cover", "./...") // nolint: gas
 
 	output, err := cmd.CombinedOutput()
 	return output, err
