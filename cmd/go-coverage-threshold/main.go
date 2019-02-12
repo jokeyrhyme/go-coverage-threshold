@@ -54,7 +54,7 @@ func goPath() (string, error) {
 		return "", errors.New("no GOPATH or HOME in environment")
 	}
 	stat, err := os.Stat(path.Join(home, "go", "src"))
-	if err != nil || stat.IsDir() {
+	if err != nil || !stat.IsDir() {
 		return "", errors.New("$HOME/go is not a valid GOPATH")
 	}
 	return path.Join(home, "go"), nil
