@@ -59,7 +59,7 @@ func Load(wd string) (*Config, error) {
 }
 
 func readFile(s string) ([]byte, error) {
-	f, err := os.Open(s)
+	f, err := os.Open(s) // nolint: gosec
 	if err != nil {
 		return nil, err
 	}
